@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Query Builder</title>
+    <style type="text/css">
+        .head
+        {
+            /* for IE */
+            filter: alpha(opacity=50);
+            /* CSS 3 standard */
+            opacity: 0.5;
+        }
+        .seperator
+        {
+            border-right: 2px solid brown;
+        }
+    </style>
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js" type="text/javascript"></script>
+    <script src="res/json2.js" type="text/javascript"></script>
+    <script src="condition-builder.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnCondition').click(function () {
+                var query = {};
+                query = getCondition('.query > table');
+                //var l = JSON.stringify(query,null,4);
+                var l = JSON.stringify(query);
+                alert(l);
+            });
+
+            $('#btnQuery').click(function () {
+                var con = getCondition('.query >table');
+                var k = getQuery(con);
+                alert(k);
+            });
+            addqueryroot('.query', true);
+
+        });
+    </script>
+</head>
+<body>
+    <span>Query Starts after this</span>
+    <div class="query">
+    </div>
+    <button id="btnCondition">
+        Get Condition</button>
+    <button id="btnQuery">
+        Get Query</button>
+</body>
+</html>
