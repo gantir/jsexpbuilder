@@ -123,11 +123,11 @@ var getCondition = function (rootsel) {
     q.expressions = expressions;
 
     // Get all the nested expressions
-    if ($(elem[1]).find('table').length != 0) {
-        var len = $(elem[1]).find('table').length;
+	 if ($(elem[1]).find('> div > table').length != 0) {
+       var len = $(elem[1]).find('> div > table').length;
 
         for (var k = 0; k < len; k++) {
-            nestedexpressions[k] = getCondition($(elem[1]).find('table')[k]);
+           nestedexpressions[k] = getCondition($(elem[1]).find('> div > table')[k]);
         }
     }
     q.nestedexpressions = nestedexpressions;
@@ -157,6 +157,7 @@ var getQuery = function (condition) {
     var q = [];
     if (e.length > 0)
         q.push(e.join(op));
+		
     if (n.length > 0)
         q.push(n.join(op));
 
