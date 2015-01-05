@@ -75,7 +75,16 @@ var addqueryroot = function (sel, isroot) {
     elem.find('td >.querystmts').append(statement);
 
     // Add the head class to the first statement
-    elem.find('td >.querystmts div >.remove').addClass('head');
+   // elem.find('td >.querystmts div >.remove').addClass('head');
+   // Above line is commented to allow create multiple expressions and not single expression
+   
+   //code to remove the top most mandatory expression, so that multiple expressions can be created 
+   //by clicking on the "()" button.
+   var stmt = elem.find('td >.querystmts div >.remove');
+	stmt.unbind('click');
+	stmt.click(function() {
+		$(this).parent().detach();
+	});
 
     // Handle click for adding new statement segment
     // When a new statement is added add a condition to handle remove click.
